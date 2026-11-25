@@ -25,6 +25,8 @@ const crearTablaCalificaciones = async () => {
     await pool.query(`ALTER TABLE calificaciones ADD COLUMN IF NOT EXISTS docente_id INTEGER REFERENCES docentes(id) ON DELETE CASCADE;`);
     await pool.query(`ALTER TABLE calificaciones ADD COLUMN IF NOT EXISTS periodo INTEGER DEFAULT 1;`);
     await pool.query(`ALTER TABLE calificaciones ADD COLUMN IF NOT EXISTS anio INTEGER DEFAULT 2026;`);
+    await pool.query(`ALTER TABLE calificaciones ADD COLUMN IF NOT EXISTS desempeno VARCHAR(50);`);
+await pool.query(`ALTER TABLE calificaciones ADD COLUMN IF NOT EXISTS observacion TEXT;`);
     console.log('Tabla "calificaciones" verificada y actualizada con éxito en PostgreSQL.');
   } catch (err) {
     console.error('Error al crear o actualizar la tabla calificaciones:', err);
